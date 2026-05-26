@@ -1,0 +1,34 @@
+{
+  "realm": "bst-demo",
+  "displayName": "BST Demo Realm",
+  "enabled": true,
+  "sslRequired": "external",
+  "clients": [
+    {
+      "clientId": "demo-client",
+      "name": "BST Demo Client",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "secret": "demo-client-secret-123"
+    },
+    {
+      "clientId": "scheduling-agent",
+      "name": "Scheduling Agent",
+      "enabled": true,
+      "publicClient": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "secret": "scheduling-agent-secret-456"
+    },
+    {
+      "clientId": "booking-agent",
+      "name": "Booking Agent",
+      "enabled": true,
+      "publicClient": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "secret": "booking-agent-secret-789"
+    }
+  ]
+}

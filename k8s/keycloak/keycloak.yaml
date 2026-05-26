@@ -1,0 +1,146 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-realm-import
+  namespace: keycloak
+data:
+  realm.json: |
+    {
+      "realm": "bst-demo",
+      "displayName": "BST Demo Realm",
+      "enabled": true,
+      "sslRequired": "external",
+      "clients": [
+        {
+          "clientId": "demo-client",
+          "name": "BST Demo Client",
+          "enabled": true,
+          "publicClient": true,
+          "directAccessGrantsEnabled": true,
+          "secret": "demo-client-secret-123"
+        },
+        {
+          "clientId": "scheduling-agent",
+          "name": "Scheduling Agent",
+          "enabled": true,
+          "publicClient": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": true,
+          "secret": "scheduling-agent-secret-456"
+        },
+        {
+          "clientId": "booking-agent",
+          "name": "Booking Agent",
+          "enabled": true,
+          "publicClient": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": true,
+          "secret": "booking-agent-secret-789"
+        }
+      ]
+    }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+  namespace: keycloak
+  labels:
+    app: keycloak
+spec:
+  type: ClusterIP
+  selector:
+    app: keycloak
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  namespace: keycloak
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:24.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: KEYCLOAK_ADMIN
+              value: admin
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: admin
+            - name: KC_DB
+              value: dev-file
+            - name: KC_PROXY
+              value: passthrough
+            - name: KC_HTTP_ENABLED
+              value: "true"
+            - name: KC_HTTPS_ENABLED
+              value: "false"
+          args:
+            - start-dev
+            - --import-realm
+          volumeMounts:
+            - name: realm-import
+              mountPath: /opt/keycloak/data/import
+              readOnly: true
+          livenessProbe:
+            httpGet:
+              path: /realms/bst-demo
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /realms/bst-demo
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+      volumes:
+        - name: realm-import
+          configMap:
+            name: keycloak-realm-import
+            items:
+              - key: realm.json
+                path: realm.json
