@@ -106,6 +106,9 @@ Static API keys per external MCP container, stored in AgentGateway. Brokered via
 | k8s manifests | Plain kubectl manifests | Simple, no Helm complexity for a demo |
 | Demo client | curl in VS Code terminal | Developer-native, transparent, no UI to maintain |
 
+### FastMCP Version
+**FastMCP 3.3.1 is the tested and confirmed working version.** Do not upgrade without testing — breaking changes exist between 2.x and 3.x. Both external MCP servers run as persistent HTTP servers using the FastMCP 3.x transport API (`mcp.run(transport="http", host="0.0.0.0", port=8000)`). The authlib deprecation warning on startup is harmless — do not attempt to fix it.
+
 ### Air-Gapped Fallback (documented, not built for v0.1)
 Uncomment Ollama in `docker-compose.yaml` and add as AgentGateway upstream. Two changes. Everything else identical. Do this before the demo, not during it.
 
