@@ -1,0 +1,222 @@
+{
+  "launch_windows": [
+    {
+      "id": "SLS-001",
+      "mission": "Artemis II",
+      "vehicle": "Space Launch System",
+      "launch_site": "Kennedy Space Center",
+      "window_start": "2025-09-15T14:00:00Z",
+      "window_end": "2025-09-15T16:30:00Z",
+      "duration_minutes": 150,
+      "status": "scheduled",
+      "crew_capacity": 4,
+      "cargo_capacity_kg": 2700
+    },
+    {
+      "id": "SLS-002",
+      "mission": "Artemis III",
+      "vehicle": "Space Launch System",
+      "launch_site": "Kennedy Space Center",
+      "window_start": "2026-03-20T10:00:00Z",
+      "window_end": "2026-03-20T12:45:00Z",
+      "duration_minutes": 165,
+      "status": "scheduled",
+      "crew_capacity": 4,
+      "cargo_capacity_kg": 2700
+    },
+    {
+      "id": "ORION-045",
+      "mission": "Deep Space Cargo 7",
+      "vehicle": "Orion",
+      "launch_site": "Kennedy Space Center",
+      "window_start": "2025-07-22T08:15:00Z",
+      "window_end": "2025-07-22T10:00:00Z",
+      "duration_minutes": 105,
+      "status": "scheduled",
+      "crew_capacity": 0,
+      "cargo_capacity_kg": 1200
+    },
+    {
+      "id": "SLS-003",
+      "mission": "Artemis IV",
+      "vehicle": "Space Launch System",
+      "launch_site": "Kennedy Space Center",
+      "window_start": "2027-06-10T16:30:00Z",
+      "window_end": "2027-06-10T19:00:00Z",
+      "duration_minutes": 150,
+      "status": "scheduled",
+      "crew_capacity": 4,
+      "cargo_capacity_kg": 2700
+    }
+  ],
+  "weather_conditions": {
+    "kennedy_space_center": {
+      "location": "Kennedy Space Center, FL",
+      "last_updated": "2025-05-26T12:00:00Z",
+      "current": {
+        "temperature_c": 28,
+        "wind_speed_ms": 4.5,
+        "wind_direction": "ESE",
+        "cloud_cover_percent": 15,
+        "visibility_km": 12,
+        "sea_state": "moderate",
+        "sea_state_height_m": 0.9,
+        "precipitation_percent": 5
+      },
+      "forecast_7day": [
+        {
+          "date": "2025-05-27",
+          "high_c": 29,
+          "low_c": 23,
+          "wind_avg_ms": 3.2,
+          "rain_probability": 10,
+          "go_no_go": "GO"
+        },
+        {
+          "date": "2025-05-28",
+          "high_c": 30,
+          "low_c": 24,
+          "wind_avg_ms": 5.1,
+          "rain_probability": 15,
+          "go_no_go": "GO"
+        },
+        {
+          "date": "2025-05-29",
+          "high_c": 27,
+          "low_c": 22,
+          "wind_avg_ms": 6.8,
+          "rain_probability": 45,
+          "go_no_go": "NO-GO"
+        }
+      ]
+    }
+  },
+  "launch_sites": [
+    {
+      "id": "KSC",
+      "name": "Kennedy Space Center",
+      "location": "Merritt Island, FL",
+      "latitude": 28.3922,
+      "longitude": -80.6045,
+      "pads": ["39A", "39B", "LC-39C"],
+      "status": "operational",
+      "last_inspection": "2025-05-20T09:30:00Z",
+      "maintenance_windows": []
+    },
+    {
+      "id": "WFF",
+      "name": "Wallops Flight Facility",
+      "location": "Wallops Island, VA",
+      "latitude": 37.8425,
+      "longitude": -75.4728,
+      "pads": ["0A", "0B"],
+      "status": "operational",
+      "last_inspection": "2025-05-18T14:15:00Z",
+      "maintenance_windows": []
+    },
+    {
+      "id": "VAFB",
+      "name": "Vandenberg Space Force Base",
+      "location": "Lompoc, CA",
+      "latitude": 34.7331,
+      "longitude": -120.5733,
+      "pads": ["SLC-3E", "SLC-6"],
+      "status": "operational",
+      "last_inspection": "2025-05-19T11:00:00Z",
+      "maintenance_windows": []
+    }
+  ],
+  "range_safety": {
+    "status": "active",
+    "last_updated": "2025-05-26T11:45:00Z",
+    "range_officer": "CDRO-782",
+    "weather_go_no_go": "GO",
+    "vehicle_readiness": "GO",
+    "tracking_system": "operational",
+    "range_commander": "authorized",
+    "last_clearance_check": "2025-05-26T11:30:00Z",
+    "next_scheduled_check": "2025-05-26T17:00:00Z",
+    "restricted_airspace": [
+      {
+        "id": "RA-KEF-01",
+        "radius_nm": 5,
+        "altitude_min_ft": 0,
+        "altitude_max_ft": 50000,
+        "status": "active"
+      },
+      {
+        "id": "RA-KEF-02",
+        "radius_nm": 10,
+        "altitude_min_ft": 50000,
+        "altitude_max_ft": 250000,
+        "status": "active"
+      }
+    ]
+  },
+  "cafeteria_menu": {
+    "facility": "Kennedy Space Center Operations Facility",
+    "date": "2025-05-26",
+    "meals": [
+      {
+        "meal_type": "breakfast",
+        "items": [
+          {
+            "name": "Scrambled Eggs with Space-Grade Cheddar",
+            "calories": 320,
+            "price_usd": 6.50
+          },
+          {
+            "name": "Cosmic Pancakes with Freeze-Dried Strawberries",
+            "calories": 450,
+            "price_usd": 7.00
+          },
+          {
+            "name": "Zero-G Granola Bowl",
+            "calories": 280,
+            "price_usd": 5.75
+          }
+        ]
+      },
+      {
+        "meal_type": "lunch",
+        "items": [
+          {
+            "name": "Mission Control Burger",
+            "calories": 680,
+            "price_usd": 11.50
+          },
+          {
+            "name": "Orbit-Ready Tuna Wrap",
+            "calories": 520,
+            "price_usd": 9.25
+          },
+          {
+            "name": "Houston, We Have Pasta",
+            "calories": 610,
+            "price_usd": 10.00
+          }
+        ]
+      },
+      {
+        "meal_type": "dinner",
+        "items": [
+          {
+            "name": "Artemis Grilled Salmon",
+            "calories": 750,
+            "price_usd": 16.00
+          },
+          {
+            "name": "Lunar Base Ribeye Steak",
+            "calories": 820,
+            "price_usd": 18.50
+          },
+          {
+            "name": "Venus-Inspired Vegetarian Risotto",
+            "calories": 540,
+            "price_usd": 12.00
+          }
+        ]
+      }
+    ]
+  }
+}

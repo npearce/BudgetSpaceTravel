@@ -1,0 +1,66 @@
+services:
+  nasa:
+    build:
+      context: ./nasa
+      dockerfile: Dockerfile
+    container_name: nasa-mcp
+    ports:
+      - "8001:8000"
+    networks:
+      - bst-external
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MCP_SERVER_TRANSPORT=http
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    restart: "no"
+
+  spacex:
+    build:
+      context: ./spacex
+      dockerfile: Dockerfile
+    container_name: spacex-mcp
+    ports:
+      - "8002:8000"
+    networks:
+      - bst-external
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MCP_SERVER_TRANSPORT=http
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    restart: "no"
+
+  # Ollama air-gapped fallback — uncomment before demo if live LLM is unavailable
+  # To enable: uncomment this service, rebuild the Kind cluster with ollama-patch.yaml,
+  # and update AgentGateway config to route to ollama:11434 instead of external LLM provider.
+  # Everything else remains unchanged — same MCP interface, same networking.
+  #
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: ollama-local
+  #   ports:
+  #     - "11434:11434"
+  #   networks:
+  #     - bst-external
+  #   volumes:
+  #     - ollama-data:/root/.ollama
+  #   environment:
+  #     - OLLAMA_HOST=0.0.0.0:11434
+  #   restart: unless-stopped
+
+networks:
+  bst-external:
+    name: bst-external
+    driver: bridge
+
+# volumes:
+#   ollama-data:

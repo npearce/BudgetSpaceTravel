@@ -1,0 +1,230 @@
+{
+  "vehicles": [
+    {
+      "id": "F9-001",
+      "name": "Falcon 9",
+      "type": "expendable",
+      "status": "operational",
+      "leo_capacity_kg": 22800,
+      "gto_capacity_kg": 8300,
+      "booster_reusable": true,
+      "stages": 2,
+      "payload_fairings": ["standard", "composite"],
+      "last_flight": "2025-05-22T16:45:00Z",
+      "next_availability": "2025-06-15T18:00:00Z"
+    },
+    {
+      "id": "FH-002",
+      "name": "Falcon Heavy",
+      "type": "heavy_lift",
+      "status": "operational",
+      "leo_capacity_kg": 63800,
+      "gto_capacity_kg": 26700,
+      "booster_reusable": true,
+      "stages": 3,
+      "payload_fairings": ["standard", "composite"],
+      "last_flight": "2025-04-10T14:20:00Z",
+      "next_availability": "2025-08-01T12:00:00Z"
+    },
+    {
+      "id": "SS-003",
+      "name": "Starship",
+      "type": "super_heavy",
+      "status": "development",
+      "leo_capacity_kg": 150000,
+      "gto_capacity_kg": 21000,
+      "booster_reusable": true,
+      "stages": 2,
+      "payload_fairings": ["standard"],
+      "last_flight": null,
+      "next_availability": "2025-12-15T08:00:00Z"
+    }
+  ],
+  "flight_manifest": [
+    {
+      "id": "SPACEX-2025-034",
+      "vehicle": "Falcon 9",
+      "launch_site": "Cape Canaveral",
+      "scheduled_date": "2025-06-15T18:00:00Z",
+      "customer": "Starlink (internal)",
+      "payload_mass_kg": 22000,
+      "orbit_type": "LEO",
+      "status": "scheduled",
+      "mission_name": "Starlink Group 8-10"
+    },
+    {
+      "id": "SPACEX-2025-035",
+      "vehicle": "Falcon 9",
+      "launch_site": "Boca Chica",
+      "scheduled_date": "2025-07-02T22:30:00Z",
+      "customer": "Intelsat",
+      "payload_mass_kg": 6500,
+      "orbit_type": "GTO",
+      "status": "scheduled",
+      "mission_name": "Intelsat 45"
+    },
+    {
+      "id": "SPACEX-2025-036",
+      "vehicle": "Falcon Heavy",
+      "launch_site": "Cape Canaveral",
+      "scheduled_date": "2025-08-01T12:00:00Z",
+      "customer": "US Space Force",
+      "payload_mass_kg": 55000,
+      "orbit_type": "GEO",
+      "status": "scheduled",
+      "mission_name": "USSF-67"
+    },
+    {
+      "id": "SPACEX-2025-037",
+      "vehicle": "Falcon 9",
+      "launch_site": "Cape Canaveral",
+      "scheduled_date": "2025-09-10T14:15:00Z",
+      "customer": "Axiom Space",
+      "payload_mass_kg": 2800,
+      "orbit_type": "LEO",
+      "status": "scheduled",
+      "mission_name": "Axiom Mission 4"
+    }
+  ],
+  "pricing_tiers": [
+    {
+      "id": "F9-LEO-SMALL",
+      "vehicle": "Falcon 9",
+      "orbit": "LEO",
+      "payload_class": "small",
+      "payload_mass_range_kg": [100, 5000],
+      "price_usd": 62000000,
+      "dedicated_flight": false,
+      "lead_time_months": 18,
+      "inclusions": ["standard_fairing", "basic_integration", "tracking"]
+    },
+    {
+      "id": "F9-LEO-MEDIUM",
+      "vehicle": "Falcon 9",
+      "orbit": "LEO",
+      "payload_class": "medium",
+      "payload_mass_range_kg": [5000, 15000],
+      "price_usd": 75000000,
+      "dedicated_flight": true,
+      "lead_time_months": 24,
+      "inclusions": ["composite_fairing", "integration", "tracking", "deployment_support"]
+    },
+    {
+      "id": "F9-GTO-MEDIUM",
+      "vehicle": "Falcon 9",
+      "orbit": "GTO",
+      "payload_class": "medium",
+      "payload_mass_range_kg": [4000, 8000],
+      "price_usd": 110000000,
+      "dedicated_flight": true,
+      "lead_time_months": 30,
+      "inclusions": ["composite_fairing", "full_integration", "tracking", "apogee_kick_support"]
+    },
+    {
+      "id": "FH-GEO-HEAVY",
+      "vehicle": "Falcon Heavy",
+      "orbit": "GEO",
+      "payload_class": "heavy",
+      "payload_mass_range_kg": [20000, 45000],
+      "price_usd": 250000000,
+      "dedicated_flight": true,
+      "lead_time_months": 36,
+      "inclusions": ["composite_fairing", "full_integration", "tracking", "apogee_kick_support", "orbit_insertion"]
+    },
+    {
+      "id": "SS-LEO-SUPER",
+      "vehicle": "Starship",
+      "orbit": "LEO",
+      "payload_class": "super",
+      "payload_mass_range_kg": [50000, 150000],
+      "price_usd": 15000000,
+      "dedicated_flight": true,
+      "lead_time_months": 48,
+      "inclusions": ["cargo_bay", "full_integration", "tracking", "deployment_support", "return_capsule_option"],
+      "status": "future"
+    }
+  ],
+  "booking_slots": [
+    {
+      "slot_id": "SLOT-F9-2025-Q3-001",
+      "vehicle": "Falcon 9",
+      "launch_window": "2025-07-15T18:00:00Z to 2025-07-15T20:00:00Z",
+      "available_payload_capacity_kg": 8000,
+      "orbit_capability": ["LEO", "SSO"],
+      "reserved": false,
+      "price_usd": 62000000
+    },
+    {
+      "slot_id": "SLOT-F9-2025-Q4-001",
+      "vehicle": "Falcon 9",
+      "launch_window": "2025-10-05T12:00:00Z to 2025-10-05T14:00:00Z",
+      "available_payload_capacity_kg": 22000,
+      "orbit_capability": ["LEO"],
+      "reserved": false,
+      "price_usd": 75000000
+    },
+    {
+      "slot_id": "SLOT-FH-2025-Q4-001",
+      "vehicle": "Falcon Heavy",
+      "launch_window": "2025-11-20T08:00:00Z to 2025-11-20T10:00:00Z",
+      "available_payload_capacity_kg": 45000,
+      "orbit_capability": ["GEO", "GTO", "escape"],
+      "reserved": false,
+      "price_usd": 250000000
+    },
+    {
+      "slot_id": "SLOT-F9-2025-Q3-002",
+      "vehicle": "Falcon 9",
+      "launch_window": "2025-09-22T14:30:00Z to 2025-09-22T16:30:00Z",
+      "available_payload_capacity_kg": 5000,
+      "orbit_capability": ["SSO"],
+      "reserved": false,
+      "price_usd": 62000000
+    }
+  ],
+  "internal_cost_model": {
+    "note": "SpaceX confidential - not for customer visibility",
+    "generation_date": "2025-05-26T12:00:00Z",
+    "vehicles": [
+      {
+        "vehicle": "Falcon 9",
+        "manufacturing_cost_millions": 28,
+        "launch_operations_cost_millions": 8,
+        "payload_integration_cost_millions": 2,
+        "total_direct_cost_millions": 38,
+        "booster_recovery_cost_millions": 3,
+        "net_cost_millions": 35,
+        "f9_leo_list_price_millions": 62,
+        "gross_margin_percent": 44
+      },
+      {
+        "vehicle": "Falcon Heavy",
+        "manufacturing_cost_millions": 65,
+        "launch_operations_cost_millions": 12,
+        "payload_integration_cost_millions": 3,
+        "total_direct_cost_millions": 80,
+        "booster_recovery_cost_millions": 8,
+        "net_cost_millions": 72,
+        "fh_gto_list_price_millions": 250,
+        "gross_margin_percent": 71
+      },
+      {
+        "vehicle": "Starship",
+        "manufacturing_cost_millions": 65,
+        "launch_operations_cost_millions": 8,
+        "payload_integration_cost_millions": 2,
+        "total_direct_cost_millions": 75,
+        "booster_recovery_cost_millions": 2,
+        "net_cost_millions": 73,
+        "ss_leo_list_price_millions": 15,
+        "gross_margin_negative_percent": -79,
+        "note": "Development phase - pricing below cost for market adoption"
+      }
+    ],
+    "summary": {
+      "average_gross_margin": 38,
+      "market_strategy": "Falcon 9 and Heavy subsidize Starship development",
+      "last_updated": "2025-05-01T09:00:00Z"
+    }
+  }
+}
